@@ -4,7 +4,7 @@ set -e
 set -u
 set -x
 
-merge_from=10.0-base
+merge_from=trunk
 
 base_dir="$(cd $(dirname "$0") && pwd)"
 top_dir="${base_dir}/.."
@@ -27,7 +27,7 @@ setup_repositories()
 
     if [ ! -d ${merge_from} ]; then
 	bzr init-repo .
-	bzr branch lp:~maria-captains/maria/${merge_from}
+	bzr branch lp:maria ${merge_from}
 	rm -rf mroonga
     fi
 
