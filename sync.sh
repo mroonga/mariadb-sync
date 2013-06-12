@@ -19,6 +19,19 @@ tmp_install_dir="${top_dir}/tmp/local"
 
 build_dir="${tmp_dir}/mroonga.build"
 
+n_processors=1
+case `uname` in
+    Linux)
+	n_processors="$(grep '^processor' /proc/cpuinfo | wc -l)"
+	;;
+    Darwin)
+	n_processors="$(/usr/sbin/sysctl -n hw.ncpu)"
+	;;
+    *)
+	:
+	;;
+esac
+
 export PKG_CONFIG_PATH="${tmp_install_dir}/lib/pkgconfig"
 
 setup_repositories()
@@ -115,7 +128,7 @@ build()
 run_test()
 {
     cd "${mroonga_branch_dir}/mysql-test"
-    ./mysql-test-run
+    ./mysql-test-run --parallel=${n_processors}
 }
 
 setup_repositories
