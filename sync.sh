@@ -77,10 +77,11 @@ update_mroonga()
 
     mysql_test_dir="${mroonga_branch_dir}/mysql-test"
     mroonga_test_suite="${mysql_test_dir}/suite/mroonga"
+    mroonga_include="${mysql_test_dir}/include/mroonga"
     rm -rf "${mroonga_test_suite}"
     mv "${bundled_mroonga_dir}/test/sql/suite/mroonga" "${mroonga_test_suite}"
-    mv "${bundled_mroonga_dir}/test/sql/include/"*.inc \
-	"${mysql_test_dir}/include"
+    rm -rf "${mroonga_include}"
+    mv "${bundled_mroonga_dir}/test/sql/include/mroonga" "${mroonga_include}"
     rm -rf "${bundled_mroonga_dir}/test"
 }
 
