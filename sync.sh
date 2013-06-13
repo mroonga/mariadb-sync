@@ -125,6 +125,12 @@ update_bundles()
     update_mroonga
     update_groonga
     update_groonga_normalizer_mysql
+
+    cd "${mroonga_branch_dir}"
+    bzr add
+    bzr commit \
+	-m "Update mroonga to the latest version on $(date --iso-8601=seconds)" || \
+	true
 }
 
 build()
