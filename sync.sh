@@ -143,11 +143,23 @@ build()
 run_test()
 {
     cd "${mroonga_branch_dir}/mysql-test"
+
+    all_test_suite_names=""
+    cd "suite"
+    for test_suite_name in $(find mroonga -type d '!' -name '[tr]'); do
+	if [ -n "${all_test_suite_names}" ]; then
+	    all_test_suite_names="${all_test_suite_names},"
+	fi
+	all_test_suite_names="${all_test_suite_names}${test_suite_name}"
+    done
+    cd -
+
     ./mysql-test-run \
 	--parallel=${n_processors} \
 	--no-check-testcases \
 	--retry=1 \
-	--force
+	--force \
+	--suite="${all_test_suite_names}"
 }
 
 setup_repositories
