@@ -75,9 +75,13 @@ update_mroonga()
     cp -a * "${bundled_mroonga_dir}/"
     rm -rf "${bundled_mroonga_dir}/doc/"
 
-    mroonga_test_suite="${mroonga_branch_dir}/mysql-test/suite/mroonga"
+    mysql_test_dir="${mroonga_branch_dir}/mysql-test"
+    mroonga_test_suite="${mysql_test_dir}/suite/mroonga"
     rm -rf "${mroonga_test_suite}"
     mv "${bundled_mroonga_dir}/test/sql/suite/mroonga" "${mroonga_test_suite}"
+    mv "${bundled_mroonga_dir}/test/sql/include/"*.inc \
+	"${mysql_test_dir}/include"
+    rm -rf "${bundled_mroonga_dir}/test"
 }
 
 update_groonga()
