@@ -132,7 +132,11 @@ build()
 run_test()
 {
     cd "${mroonga_branch_dir}/mysql-test"
-    ./mysql-test-run --parallel=${n_processors}
+    ./mysql-test-run \
+	--parallel=${n_processors} \
+	--no-check-testcases \
+	--retry=1 \
+	--force
 }
 
 setup_repositories
