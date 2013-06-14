@@ -154,6 +154,8 @@ run_test()
     done
     cd -
 
+    export GRN_PLUGINS_DIR="${bundled_groonga_normalizer_mysql_dir}"
+
     ./mysql-test-run \
 	--parallel=${n_processors} \
 	--no-check-testcases \
