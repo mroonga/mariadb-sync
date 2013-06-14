@@ -157,6 +157,9 @@ run_test()
     export GRN_PLUGINS_DIR="${bundled_groonga_normalizer_mysql_dir}"
 
     ./mysql-test-run \
+	--valgrind \
+	--valgrind-option=--show-reachable=yes \
+	--valgrind-option=--gen-suppressions=all \
 	--parallel=${n_processors} \
 	--no-check-testcases \
 	--retry=1 \
