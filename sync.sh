@@ -55,6 +55,7 @@ merge_mariadb()
     bzr pull
 
     cd "${mroonga_branch_dir}"
+    BUILD/cleanup
     bzr merge ../${merge_from}
     bzr commit -m "Merge from ${merge_from}" || true
 }
