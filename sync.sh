@@ -134,11 +134,13 @@ build()
 
 run_test()
 {
-    cd "${mroonga_branch_dir}/mysql-test"
-
     all_test_suite_names=""
-    cd "suite"
-    for test_suite_name in $(find mroonga -type d '!' -name '[tr]'); do
+    cd "${bundled_mroonga_dir}/mysql-test"
+    for test_suite_name in \
+	    $(find mroonga -type d -name 'include' '!' -prune -o \
+			   -type d '!' -name 'mroonga' \
+				   '!' -name 'include' \
+				   '!' -name '[tr]'); do
 	if [ -n "${all_test_suite_names}" ]; then
 	    all_test_suite_names="${all_test_suite_names},"
 	fi
@@ -148,6 +150,7 @@ run_test()
 
     export GRN_PLUGINS_DIR="${bundled_groonga_normalizer_mysql_dir}"
 
+    cd "${mroonga_branch_dir}/mysql-test"
     ./mysql-test-run \
 	--valgrind \
 	--valgrind-option=--show-reachable=yes \
