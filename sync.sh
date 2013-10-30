@@ -122,7 +122,7 @@ update_bundles()
     cd "${mroonga_branch_dir}"
     bzr add
     bzr commit \
-	-m "Update mroonga to the latest version on $(date --iso-8601=seconds)" || \
+	-m "Update Mroonga to the latest version on $(date --iso-8601=seconds)" || \
 	true
 }
 

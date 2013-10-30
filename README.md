@@ -1,6 +1,6 @@
-# MariaDBとmroongaを最新版にするスクリプト
+# MariaDBとMroongaを最新版にするスクリプト
 
-このリポジトリではMariaDBとmroongaを最新版にするスクリプトを提供してい
+このリポジトリではMariaDBとMroongaを最新版にするスクリプトを提供してい
 ます。それがsync.shです。これを実行すると以下のことを自動でやってくれま
 す。
 
