@@ -75,6 +75,8 @@ update_mroonga()
     mkdir -p "${bundled_mroonga_dir}"
     cp -a * "${bundled_mroonga_dir}/"
     rm -rf "${bundled_mroonga_dir}/doc/"
+    ruby flatten-test.rb "${bundled_mroonga_dir}/mysql-test/storage"
+    ruby flatten-test.rb "${bundled_mroonga_dir}/mysql-test/wrapper"
 }
 
 update_groonga()
