@@ -75,10 +75,12 @@ update_mroonga()
     mkdir -p "${bundled_mroonga_dir}"
     cp -a * "${bundled_mroonga_dir}/"
     rm -rf "${bundled_mroonga_dir}/doc/"
-    ruby "${base_dir}/flatten-test.rb" \
+    ruby "${base_dir}/flatten-test-file.rb" \
 	"${bundled_mroonga_dir}/mysql-test/mroonga/storage"
-    ruby "${base_dir}/flatten-test.rb" \
+    ruby "${base_dir}/flatten-test-file.rb" \
 	"${bundled_mroonga_dir}/mysql-test/mroonga/wrapper"
+    ruby "${base_dir}/flatten-test-file-path.rb" \
+	"${bundled_mroonga_dir}/CMakeLists.txt"
 }
 
 update_groonga()

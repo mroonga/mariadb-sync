@@ -65,7 +65,7 @@ base_dir.find do |path|
   when ".test"
     next if relative_path.dirname == relative_top_t_dir
     resolve_include_path(path, relative_path)
-  when ".result"
+  when ".result", ".in"
     next if relative_path.dirname == relative_top_r_dir
   else
     next
