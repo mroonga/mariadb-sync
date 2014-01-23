@@ -27,6 +27,14 @@ def flatten_path(path)
   Pathname(t_or_r) + components.join("_")
 end
 
+def valid_string?(string)
+  if string.respond_to?(:valid_encoding?)
+    string.valid_encoding?
+  else
+    true
+  end
+end
+
 def resolve_include_path(path, relative_path)
   content = path.open do |file|
     file.read
@@ -34,7 +42,7 @@ def resolve_include_path(path, relative_path)
   n_parents = relative_path.dirname.dirname.to_s.split("/").size
   resolved_content = ""
   content.each_line do |line|
-    if line.valid_encoding?
+    if valid_string?(line)
       line = line.gsub(/^(--source )(\..*\/include\/mroonga\/.*)/) do
         prefix = $1
         mroonga_include_path = $2
