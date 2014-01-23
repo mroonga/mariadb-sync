@@ -9,7 +9,7 @@ cmakelists_txt = Pathname(ARGV[0])
 resolved_content = ""
 cmakelists_txt.open do |file|
   file.each_line do |line|
-    resolved_line = line.gsub(/(\$\{MRN_TEST_SUITE_DIR\})(\/\S+)/) do
+    resolved_line = line.gsub(/(\$\{MRN_TEST_SUITE_DIR\}\/)(\S+)/) do
       prefix = $1
       components = $2.split("/")
       mode = components.first
