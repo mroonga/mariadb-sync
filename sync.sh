@@ -5,6 +5,7 @@ set -u
 set -x
 
 merge_from=trunk
+push_repository=lp:~mroonga/maria/mroonga
 
 base_dir="$(cd $(dirname "$0") && pwd)"
 top_dir="${base_dir}/.."
@@ -45,7 +46,7 @@ setup_repositories()
     fi
 
     if [ ! -d mroonga ]; then
-	bzr branch ${merge_from} mroonga
+	bzr branch ${push_repository} mroonga
     fi
 }
 
